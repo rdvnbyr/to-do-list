@@ -4,10 +4,10 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { StyledProvider } from "./context/StyledContext";
-import "bootstrap/dist/css/bootstrap.min.css";
 import { AppProvider } from "./context/AppContext";
 import { Provider } from "react-redux";
 import { store } from "./_redux/store";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 ReactDOM.render(
   <Provider store={store}>

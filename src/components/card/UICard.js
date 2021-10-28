@@ -11,16 +11,15 @@ import {
 
 const UICard = (props) => {
   const dispatch = useDispatch();
-  const { toggle, ping, _toggle, _ping, products, fetchLoading, error } =
-    useSelector((state) => ({
-      toggle: state.app.toggle,
-      ping: state.app.ping,
-      _toggle: state.other.toggle,
-      _ping: state.other.ping,
-      products: state.app.products,
-      fetchLoading: state.app.fetchLoading,
-      error: state.app.error,
-    }));
+  const { ping, _ping, products, fetchLoading } = useSelector((state) => ({
+    toggle: state.app.toggle,
+    ping: state.app.ping,
+    _toggle: state.other.toggle,
+    _ping: state.other.ping,
+    products: state.app.products,
+    fetchLoading: state.app.fetchLoading,
+    error: state.app.error,
+  }));
 
   useEffect(() => {
     dispatch(fetchProducts());
@@ -48,7 +47,7 @@ const UICard = (props) => {
       <StyledCardBody>
         {!fetchLoading &&
           products.length > 0 &&
-          products.map((list) => <UICardList text={list.title} id={list.id} />)}
+          products.map((list) => <UICardList text={list.title} id={list.id} key={list.id}/>)}
       </StyledCardBody>
     </StyledCard>
   );

@@ -2,7 +2,7 @@ import Navigation from "./components/navigation/Navigation";
 import UICard from "./components/card/UICard";
 import { useSelector } from "react-redux";
 import { useState, useEffect } from "react";
-import { isUndefined, isNull, isEmpty } from "lodash";
+import { isEmpty } from "lodash";
 
 function App() {
   const [errorText, setErrorText] = useState();
