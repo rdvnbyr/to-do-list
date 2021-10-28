@@ -1,24 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import Navigation from "./components/navigation/Navigation";
+import UICard from "./components/card/UICard";
+import { useSelector } from "react-redux";
+import { useState, useEffect } from "react";
+import { isUndefined, isNull, isEmpty } from "lodash";
 
 function App() {
+  const [errorText, setErrorText] = useState();
+  const { error } = useSelector((state) => ({
+    error: state.app.error,
+  }));
+  useEffect(() => {
+    if (!isEmpty(error)) {
+      setErrorText("Some Error Occured.");
+    }
+  }, [error]);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Navigation />
+      {errorText && <h1>{errorText}</h1>}
+      <div className="wrapper">
+        <UICard title="To Do List"></UICard>
+      </div>
+    </>
   );
 }
 
